@@ -1,5 +1,7 @@
 # Kuula FOH Pilot Website Implementation Plan
 
+> Implementation note (1 August 2026): Google Sites editing became unreliable in the available Chrome accessibility session. The approved design and content are therefore implemented as a standalone hosted site, preserving the same public routes and custom-domain goal.
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Publish a small public Kuula FOH Pilot website, connect `fohpilot.com`, and use it to satisfy the current ELAVHÕBE OÜ website-verification requirement in Google Play Console.
