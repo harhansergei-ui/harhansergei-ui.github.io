@@ -208,7 +208,7 @@ nav a:focus-visible,
 
 .product-code {
   margin: 0 0 20px;
-  color: #59636d;
+  color: #7d8792;
   font-family: var(--font-geist-mono), monospace;
   font-size: 11px;
   font-weight: 650;
@@ -349,7 +349,7 @@ nav a:focus-visible,
   gap: 20px;
   padding-inline: 18px;
   border-top: 1px solid var(--line);
-  color: #6f7983;
+  color: #98a1aa;
   font-family: var(--font-geist-mono), monospace;
   font-size: 8px;
   font-weight: 700;
@@ -493,7 +493,7 @@ nav a:focus-visible,
 
 .step-index {
   margin: 0 0 42px;
-  color: #5e6973;
+  color: #89939d;
   font-family: var(--font-geist-mono), monospace;
   font-size: 9px;
   font-weight: 650;
@@ -835,7 +835,7 @@ nav a:focus-visible,
 
 .site-footer p {
   margin: 0;
-  color: #606a74;
+  color: #858f99;
   font-family: var(--font-geist-mono), monospace;
   font-size: 9px;
   letter-spacing: 0.1em;

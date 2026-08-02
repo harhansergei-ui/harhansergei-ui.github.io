@@ -120,6 +120,10 @@ test("home uses the final Correction screen as its primary product image", async
     /data-app-shell="true"><figure class="product-screenshot hero-screen" data-screen="07-balanced"/,
   );
   assert.match(html, /<picture>[\s\S]*?kuula-google-play-07-balanced\.avif/);
+  assert.match(
+    html,
+    /kuula-google-play-07-balanced-768\.avif 768w, \/product\/kuula-google-play-07-balanced-960\.avif 960w, \/product\/kuula-google-play-07-balanced\.avif 1920w/,
+  );
   assert.match(html, /type="image\/avif"/);
   assert.match(html, /kuula-google-play-07-balanced\.webp/);
   assert.match(html, /type="image\/webp"/);

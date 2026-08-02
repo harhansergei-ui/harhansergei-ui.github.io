@@ -24,8 +24,24 @@ await Promise.all(
         .avif({ quality: 55, effort: 6, chromaSubsampling: "4:4:4" })
         .toFile(path.join(productRoot, `${basename}.avif`)),
       sharp(source)
+        .resize({ width: 768 })
+        .avif({ quality: 55, effort: 6, chromaSubsampling: "4:4:4" })
+        .toFile(path.join(productRoot, `${basename}-768.avif`)),
+      sharp(source)
+        .resize({ width: 960 })
+        .avif({ quality: 55, effort: 6, chromaSubsampling: "4:4:4" })
+        .toFile(path.join(productRoot, `${basename}-960.avif`)),
+      sharp(source)
         .webp({ quality: 78, effort: 6, smartSubsample: true })
         .toFile(path.join(productRoot, `${basename}.webp`)),
+      sharp(source)
+        .resize({ width: 768 })
+        .webp({ quality: 78, effort: 6, smartSubsample: true })
+        .toFile(path.join(productRoot, `${basename}-768.webp`)),
+      sharp(source)
+        .resize({ width: 960 })
+        .webp({ quality: 78, effort: 6, smartSubsample: true })
+        .toFile(path.join(productRoot, `${basename}-960.webp`)),
     ];
   }),
 );
@@ -47,5 +63,5 @@ await Promise.all([
 ]);
 
 console.log(
-  `Generated ${productPngs.length * 2 + 3} optimized Kuula image assets.`,
+  `Generated ${productPngs.length * 6 + 3} optimized Kuula image assets.`,
 );

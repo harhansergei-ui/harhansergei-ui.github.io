@@ -39,6 +39,23 @@ test("each product screen has smaller AVIF and WebP alternatives", async () => {
         alternative.size < png.size,
         `${relativePath} should be smaller than its PNG fallback`,
       );
+
+      for (const responsiveWidth of [768, 960]) {
+        const responsivePath = `${base}-${responsiveWidth}.${extension}`;
+        const responsive = await stat(path.join(publicRoot, responsivePath));
+        const responsiveMetadata = await imageMetadata(responsivePath);
+
+        assert.equal(responsiveMetadata.width, responsiveWidth, responsivePath);
+        assert.equal(
+          responsiveMetadata.height,
+          responsiveWidth * 0.625,
+          responsivePath,
+        );
+        assert.ok(
+          responsive.size < alternative.size,
+          `${responsivePath} should be smaller than its 1920px alternative`,
+        );
+      }
     }
   }
 });
