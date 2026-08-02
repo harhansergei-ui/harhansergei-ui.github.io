@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { socialMetadata } from "../_data/socialMetadata";
 
 export const metadata: Metadata = {
   title: "Support — Kuula FOH Pilot",
@@ -6,6 +7,11 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/support/",
   },
+  ...socialMetadata({
+    url: "/support/",
+    title: "Support — Kuula FOH Pilot",
+    description: "Contact support for Kuula FOH Pilot.",
+  }),
 };
 
 export default function Support() {

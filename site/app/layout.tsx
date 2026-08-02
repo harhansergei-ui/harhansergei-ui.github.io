@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { SiteFooter } from "./_components/SiteFooter";
 import { SiteHeader } from "./_components/SiteHeader";
 import { StructuredData } from "./_components/StructuredData";
+import { socialMetadata } from "./_data/socialMetadata";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -46,27 +47,11 @@ export const metadata: Metadata = {
     ],
     apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
   },
-  openGraph: {
-    type: "website",
+  ...socialMetadata({
     url: "/",
-    siteName: "Kuula FOH Pilot",
     title: "Kuula FOH Pilot",
     description: "Confidence at front of house.",
-    images: [
-      {
-        url: "/og.png",
-        width: 1200,
-        height: 630,
-        alt: "Kuula FOH Pilot — Confidence at front of house.",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Kuula FOH Pilot",
-    description: "Confidence at front of house.",
-    images: ["/og.png"],
-  },
+  }),
 };
 
 export const viewport: Viewport = {

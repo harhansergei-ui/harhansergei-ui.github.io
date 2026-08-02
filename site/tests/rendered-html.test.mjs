@@ -205,6 +205,52 @@ test("robots and sitemap advertise only the canonical Kuula site", async () => {
   assert.doesNotMatch(sitemap, /squarespace/i);
 });
 
+test("every public route exposes route-specific social metadata", async () => {
+  const routes = [
+    {
+      pathname: "/",
+      url: "https://fohpilot.com/",
+      title: "Kuula FOH Pilot",
+      description: "Confidence at front of house.",
+    },
+    {
+      pathname: "/support",
+      url: "https://fohpilot.com/support/",
+      title: "Support — Kuula FOH Pilot",
+      description: "Contact support for Kuula FOH Pilot.",
+    },
+    {
+      pathname: "/privacy",
+      url: "https://fohpilot.com/privacy/",
+      title: "Privacy Policy — Kuula FOH Pilot",
+      description: "Privacy information for Kuula FOH Pilot and fohpilot.com.",
+    },
+  ];
+
+  for (const { pathname, url, title, description } of routes) {
+    const html = await htmlFor(pathname);
+
+    assert.match(
+      html,
+      new RegExp(`<meta property="og:title" content="${title}"`),
+    );
+    assert.match(
+      html,
+      new RegExp(`<meta property="og:description" content="${description.replaceAll(".", "\\.")}"`),
+    );
+    assert.match(
+      html,
+      new RegExp(`<meta property="og:url" content="${url}"`),
+    );
+    assert.match(html, /<meta property="og:image:type" content="image\/png"/);
+    assert.match(
+      html,
+      new RegExp(`<meta name="twitter:title" content="${title}"`),
+    );
+    assert.match(html, /<meta name="twitter:image:alt" content="Kuula FOH Pilot/);
+  }
+});
+
 test("every route exposes consistent navigation and legal footer", async () => {
   for (const pathname of ["/", "/support", "/privacy"]) {
     const html = await htmlFor(pathname);

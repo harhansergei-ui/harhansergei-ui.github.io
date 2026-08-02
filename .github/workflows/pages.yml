@@ -24,13 +24,22 @@ jobs:
           node-version: 22
           cache: npm
           cache-dependency-path: site/package-lock.json
+      - name: Install dependencies
+        working-directory: site
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Check code quality
+        working-directory: site
+        run: npm run lint
+      - name: Run tests
+        working-directory: site
+        env:
+          NEXT_TELEMETRY_DISABLED: 1
+        run: npm test
       - name: Build static website
         working-directory: site
         env:
           NEXT_TELEMETRY_DISABLED: 1
-        run: |
-          npm ci --ignore-scripts --no-audit --no-fund
-          npm run build:static
+        run: npm run build:static
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

@@ -6,6 +6,7 @@ import {
   screenById,
   type ProductStage,
 } from "./_data/productScreens";
+import { socialMetadata } from "./_data/socialMetadata";
 
 export const metadata: Metadata = {
   title: "Kuula FOH Pilot — Confidence at front of house",
@@ -14,6 +15,11 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
+  ...socialMetadata({
+    url: "/",
+    title: "Kuula FOH Pilot",
+    description: "Confidence at front of house.",
+  }),
 };
 
 const workflow: Array<{

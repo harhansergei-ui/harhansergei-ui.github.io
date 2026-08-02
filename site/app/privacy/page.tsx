@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { socialMetadata } from "../_data/socialMetadata";
 
 export const metadata: Metadata = {
   title: "Privacy Policy — Kuula FOH Pilot",
@@ -6,6 +7,11 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/privacy/",
   },
+  ...socialMetadata({
+    url: "/privacy/",
+    title: "Privacy Policy — Kuula FOH Pilot",
+    description: "Privacy information for Kuula FOH Pilot and fohpilot.com.",
+  }),
 };
 
 export default function Privacy() {
