@@ -38,6 +38,24 @@ test("home introduces Kuula FOH Pilot and provides support navigation", async ()
   assert.match(html, /ELAVHÕBE OÜ/);
   assert.match(html, /href="\/support"/);
   assert.match(html, /Contact support/);
+  for (const id of [
+    "01",
+    "02",
+    "03",
+    "04",
+    "05",
+    "06",
+    "07-balanced",
+    "08",
+    "09",
+  ]) {
+    assert.match(html, new RegExp(`/product/kuula-google-play-${id}\\.png`));
+  }
+  for (const stage of ["Setup", "Measure", "Correction", "Live"]) {
+    assert.match(html, new RegExp(`>${stage}<`));
+  }
+  assert.match(html, /aria-label="Kuula FOH Pilot product screens"/);
+  assert.match(html, /data-app-shell="true"/);
   assert.doesNotMatch(html, /codex-preview|Building your site/);
 });
 

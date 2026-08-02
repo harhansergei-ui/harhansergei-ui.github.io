@@ -15,6 +15,8 @@ export function SiteHeader() {
         </Link>
         <nav aria-label="Primary">
           <Link href="/">Home</Link>
+          <Link href="/#workflow">Workflow</Link>
+          <Link href="/#screens">Screens</Link>
           <Link href="/support">Support</Link>
           <Link href="/privacy">Privacy</Link>
         </nav>
