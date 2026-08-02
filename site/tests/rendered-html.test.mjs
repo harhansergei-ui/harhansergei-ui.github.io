@@ -97,6 +97,18 @@ test("home uses the final Correction screen as its primary product image", async
     html,
     /data-app-shell="true"><figure class="product-screenshot hero-screen" data-screen="07-balanced"/,
   );
+  assert.match(html, /<picture>[\s\S]*?kuula-google-play-07-balanced\.avif/);
+  assert.match(html, /type="image\/avif"/);
+  assert.match(html, /kuula-google-play-07-balanced\.webp/);
+  assert.match(html, /type="image\/webp"/);
+  assert.match(
+    html,
+    /<img[^>]*src="\/product\/kuula-google-play-07-balanced\.png"[^>]*loading="eager"[^>]*fetchPriority="high"/,
+  );
+  assert.match(
+    html,
+    /<img[^>]*src="\/product\/kuula-google-play-01\.png"[^>]*loading="lazy"/,
+  );
 });
 
 test("support route exposes the public support email as a mail link", async () => {

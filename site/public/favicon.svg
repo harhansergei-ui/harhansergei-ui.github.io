@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Kuula">
+  <rect width="512" height="512" rx="96" fill="#0b0e11"/>
+  <path d="M112 96h72v128l116-128h94L250 249l153 167h-98L184 280v136h-72z" fill="#ff8518"/>
+  <path d="M96 48h116l-24 24H96zM304 440h112l-24 24H280z" fill="#34c8ff" opacity=".8"/>
+</svg>
