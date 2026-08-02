@@ -87,11 +87,16 @@ export default function Home() {
             Google Play.
           </p>
           <div className="hero-actions">
-            <Link className="button button-primary" href="/support">
+            <span className="release-status" aria-label="Release status">
+              <span className="release-status-mark" aria-hidden="true">
+                ▶
+              </span>
+              Coming soon on Google Play
+            </span>
+            <Link className="hero-support-link" href="/support">
               Contact support
               <span aria-hidden="true">↗</span>
             </Link>
-            <span className="platform-note">Built for Android</span>
           </div>
         </div>
 
@@ -219,7 +224,7 @@ export default function Home() {
           <div>
             <span className="company-label">DEVELOPED IN TALLINN</span>
             <p>
-              Kuula FOH Pilot is developed and published by <b>ELAVHÕBE OÜ</b>
+              Kuula FOH Pilot is developed and published by <b>ELAVHÕBE OÜ</b>{" "}
               in Tallinn, Estonia.
             </p>
           </div>

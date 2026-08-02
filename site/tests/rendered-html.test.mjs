@@ -29,8 +29,17 @@ async function htmlFor(pathname) {
   return response.text();
 }
 
+function visibleText(html) {
+  return html
+    .replace(/<!--[\s\S]*?-->/g, "")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
 test("home introduces Kuula FOH Pilot and provides support navigation", async () => {
   const html = await htmlFor("/");
+  const text = visibleText(html);
 
   assert.match(html, /<title>Kuula FOH Pilot[^<]*<\/title>/i);
   assert.match(html, /Confidence at front of house\./);
@@ -38,6 +47,21 @@ test("home introduces Kuula FOH Pilot and provides support navigation", async ()
   assert.match(html, /ELAVHÕBE OÜ/);
   assert.match(html, /href="\/support"/);
   assert.match(html, /Contact support/);
+  assert.match(html, /Coming soon on Google Play/);
+  assert.match(
+    html,
+    /class="release-status"[^>]*>[\s\S]*?Coming soon on Google Play[\s\S]*?<\/span>/,
+  );
+  assert.match(
+    html,
+    /href="\/support"[^>]*class="hero-support-link"[^>]*>[\s\S]*?Contact support/,
+  );
+  assert.match(text, /ELAVHÕBE OÜ in Tallinn, Estonia\./);
+  assert.doesNotMatch(text, /ELAVHÕBE OÜin Tallinn/);
+  assert.doesNotMatch(
+    html,
+    /class="button button-primary"[^>]*href="\/support"/,
+  );
   for (const id of [
     "01",
     "02",
