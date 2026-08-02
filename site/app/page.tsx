@@ -96,12 +96,6 @@ export default function Home() {
         </div>
 
         <div className="hero-product" data-app-shell="true">
-          <div className="app-tab-rail" aria-hidden="true">
-            <span>Setup</span>
-            <span>Measure</span>
-            <span>Correction</span>
-            <span className="active">Live</span>
-          </div>
           <ProductScreenshot
             screen={liveScreen}
             priority

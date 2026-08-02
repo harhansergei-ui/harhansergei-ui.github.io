@@ -279,42 +279,6 @@ nav a:focus-visible,
   box-shadow: var(--shadow);
 }
 
-.app-tab-rail {
-  min-height: 48px;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  border-bottom: 1px solid var(--line);
-  background: var(--surface-soft);
-}
-
-.app-tab-rail span {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #717b85;
-  font-family: var(--font-geist-mono), monospace;
-  font-size: 9px;
-  font-weight: 650;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.app-tab-rail .active {
-  color: var(--orange);
-  background: rgba(255, 133, 24, 0.05);
-}
-
-.app-tab-rail .active::after {
-  content: "";
-  position: absolute;
-  right: 20%;
-  bottom: -1px;
-  left: 20%;
-  height: 2px;
-  background: var(--orange);
-}
-
 .product-screenshot {
   min-width: 0;
   margin: 0;
@@ -1048,15 +1012,6 @@ nav a:focus-visible,
     align-items: flex-start;
     flex-direction: column;
     gap: 18px;
-  }
-
-  .app-tab-rail {
-    min-height: 42px;
-  }
-
-  .app-tab-rail span {
-    font-size: 7px;
-    letter-spacing: 0.04em;
   }
 
   .hero-product-status {

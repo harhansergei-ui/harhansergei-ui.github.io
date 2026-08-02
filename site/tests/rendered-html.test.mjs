@@ -59,6 +59,13 @@ test("home introduces Kuula FOH Pilot and provides support navigation", async ()
   assert.doesNotMatch(html, /codex-preview|Building your site/);
 });
 
+test("home does not render a second app navigation rail above the live screenshot", async () => {
+  const html = await htmlFor("/");
+
+  assert.match(html, /data-app-shell="true"/);
+  assert.doesNotMatch(html, /class="app-tab-rail"/);
+});
+
 test("support route exposes the public support email as a mail link", async () => {
   const html = await htmlFor("/support");
 
