@@ -50,13 +50,36 @@ test("support route exposes the public support email as a mail link", async () =
   assert.match(html, />kuula@fohpilot\.com</);
 });
 
-test("privacy route states the current website practices and effective date", async () => {
+test("privacy route states website and Android app practices with the current effective date", async () => {
   const html = await htmlFor("/privacy");
 
   assert.match(html, /<h1[^>]*>Privacy Policy<\/h1>/i);
   assert.match(html, /does not use analytics, advertising trackers, or user accounts/i);
   assert.match(html, /do not sell personal information/i);
-  assert.match(html, /31 July 2026/);
+  assert.match(html, /Kuula FOH Pilot Android app/i);
+  assert.match(html, /fohpilot\.com/i);
+  assert.match(html, /operated by ELAVHÕBE OÜ/i);
+  assert.match(html, /No Kuula servers/i);
+  assert.match(html, /analytics, telemetry, ads, advertising, or advertising IDs/i);
+  assert.match(html, /does not automatically upload crash reports/i);
+  assert.match(html, /microphone for measurement, Live Monitor, Setup meters, audio I\/O diagnostics, real-WING diagnostics, and USB input scanning/i);
+  assert.match(html, /App-owned playback and generated test signals stop when the app is paused/i);
+  assert.doesNotMatch(html, /Audio capture stops when the app is paused/i);
+  assert.match(html, /local Wi-Fi or LAN for WING discovery and OSC communication/i);
+  assert.match(html, /connected audio endpoints/i);
+  assert.doesNotMatch(html, /USB host enumeration/i);
+  assert.doesNotMatch(html, /foreground microphone service|continue while the app is in the background/i);
+  assert.match(html, /local app-private storage holds calibration data, reference file references, and local crash reports/i);
+  assert.match(html, /PDFs are written only to a destination you select/i);
+  assert.doesNotMatch(html, /venue profiles[^<]*app-private|exported PDFs[^<]*app-private/i);
+  assert.match(html, /Captures stay in RAM unless you export them/i);
+  assert.match(html, /only shared if you choose to send them/i);
+  assert.match(html, /UDP port 2222 for WING discovery and OSC port 2223 for control/i);
+  assert.match(html, /microphone permission and, when applicable, notification permission/i);
+  assert.match(html, /can be revoked at any time in Android settings/i);
+  assert.doesNotMatch(html, /local WING discovery, or USB equipment detection/i);
+  assert.match(html, /not directed to children under 13[^<]*do not knowingly collect personal information from children under 13/i);
+  assert.match(html, /2 August 2026/);
   assert.match(html, /Tallinn, Estonia/);
   assert.match(html, /mailto:kuula@fohpilot\.com/);
 });
