@@ -331,6 +331,12 @@ nav a:focus-visible,
   display: block;
 }
 
+.product-screen-frame picture {
+  display: block;
+  min-width: 0;
+  max-width: 100%;
+}
+
 .hero-screen .product-screen-frame {
   border: 0;
   border-radius: 0;
@@ -1023,11 +1029,6 @@ nav a:focus-visible,
     font-size: 10px;
   }
 
-  nav a:first-child,
-  nav a:nth-child(5) {
-    display: none;
-  }
-
   .hero {
     gap: 48px;
     padding-block: 52px 60px;
@@ -1109,17 +1110,19 @@ nav a:focus-visible,
   .screen-gallery {
     display: flex;
     gap: 14px;
-    width: calc(100vw - 14px);
-    margin-left: 0;
+    width: 100%;
+    max-width: 100%;
     overflow-x: auto;
     padding: 0 14px 18px 0;
+    overscroll-behavior-inline: contain;
     scroll-snap-type: x mandatory;
     scrollbar-width: thin;
     scrollbar-color: var(--line) transparent;
   }
 
   .screen-gallery .product-screenshot {
-    flex: 0 0 88vw;
+    flex: 0 0 min(86vw, 520px);
+    max-width: 100%;
     scroll-snap-align: start;
   }
 
