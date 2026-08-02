@@ -69,7 +69,7 @@ const signalStatus = [
 ];
 
 export default function Home() {
-  const liveScreen = screenById("09");
+  const heroScreen = screenById("07-balanced");
 
   return (
     <main className="home-main">
@@ -97,7 +97,7 @@ export default function Home() {
 
         <div className="hero-product" data-app-shell="true">
           <ProductScreenshot
-            screen={liveScreen}
+            screen={heroScreen}
             priority
             className="hero-screen"
             showCaption={false}

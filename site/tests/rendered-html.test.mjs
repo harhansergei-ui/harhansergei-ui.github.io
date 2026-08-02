@@ -66,6 +66,15 @@ test("home does not render a second app navigation rail above the live screensho
   assert.doesNotMatch(html, /class="app-tab-rail"/);
 });
 
+test("home uses the final Correction screen as its primary product image", async () => {
+  const html = await htmlFor("/");
+
+  assert.match(
+    html,
+    /data-app-shell="true"><figure class="product-screenshot hero-screen" data-screen="07-balanced"/,
+  );
+});
+
 test("support route exposes the public support email as a mail link", async () => {
   const html = await htmlFor("/support");
 
