@@ -80,6 +80,28 @@ test("home introduces Kuula FOH Pilot and provides support navigation", async ()
   }
   assert.match(html, /aria-label="Kuula FOH Pilot product screens"/);
   assert.match(html, /data-app-shell="true"/);
+  assert.match(
+    html,
+    /<link rel="canonical" href="https:\/\/fohpilot\.com\/"/,
+  );
+  assert.match(
+    html,
+    /<link rel="icon" href="https:\/\/fohpilot\.com\/favicon\.svg"/,
+  );
+  assert.match(
+    html,
+    /<link rel="apple-touch-icon" href="https:\/\/fohpilot\.com\/apple-touch-icon\.png"/,
+  );
+  assert.match(html, /<meta property="og:url" content="https:\/\/fohpilot\.com\/"/);
+  assert.match(html, /<meta property="og:image:width" content="1200"/);
+  assert.match(html, /<meta property="og:image:height" content="630"/);
+  assert.match(html, /<meta name="robots" content="index, follow"/);
+  assert.match(html, /<script type="application\/ld\+json">/);
+  assert.match(
+    html,
+    /"propertyID":"Estonian registry code"[\s\S]*?"value":"17331669"/,
+  );
+  assert.match(html, /"streetAddress":"Pae tn 21"/);
   assert.doesNotMatch(html, /codex-preview|Building your site/);
 });
 
@@ -122,6 +144,7 @@ test("support route exposes the public support email as a mail link", async () =
 
 test("privacy route states website and Android app practices with the current effective date", async () => {
   const html = await htmlFor("/privacy");
+  const text = visibleText(html);
 
   assert.match(html, /<h1[^>]*>Privacy Policy<\/h1>/i);
   assert.match(html, /does not use analytics, advertising trackers, or user accounts/i);
@@ -150,8 +173,32 @@ test("privacy route states website and Android app practices with the current ef
   assert.doesNotMatch(html, /local WING discovery, or USB equipment detection/i);
   assert.match(html, /not directed to children under 13[^<]*do not knowingly collect personal information from children under 13/i);
   assert.match(html, /2 August 2026/);
+  assert.match(text, /Registry code: 17331669/);
+  assert.match(text, /Pae tn 21, 11415 Tallinn, Estonia/);
   assert.match(html, /Tallinn, Estonia/);
   assert.match(html, /mailto:kuula@fohpilot\.com/);
+});
+
+test("robots and sitemap advertise only the canonical Kuula site", async () => {
+  const robotsResponse = await render("/robots.txt");
+  assert.equal(robotsResponse.status, 200);
+  const robots = await robotsResponse.text();
+  assert.match(robots, /User-Agent:\s*\*/i);
+  assert.match(robots, /Allow:\s*\//i);
+  assert.match(robots, /Sitemap:\s*https:\/\/fohpilot\.com\/sitemap\.xml/i);
+  assert.doesNotMatch(robots, /squarespace/i);
+
+  const sitemapResponse = await render("/sitemap.xml");
+  assert.equal(sitemapResponse.status, 200);
+  const sitemap = await sitemapResponse.text();
+  for (const url of [
+    "https://fohpilot.com/",
+    "https://fohpilot.com/support/",
+    "https://fohpilot.com/privacy/",
+  ]) {
+    assert.match(sitemap, new RegExp(`<loc>${url}</loc>`));
+  }
+  assert.doesNotMatch(sitemap, /squarespace/i);
 });
 
 test("every route exposes consistent navigation and legal footer", async () => {

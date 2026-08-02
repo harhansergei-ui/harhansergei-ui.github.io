@@ -11,6 +11,9 @@ export const metadata: Metadata = {
   title: "Kuula FOH Pilot — Confidence at front of house",
   description:
     "A focused Android companion for live sound professionals, developed by ELAVHÕBE OÜ in Tallinn, Estonia.",
+  alternates: {
+    canonical: "/",
+  },
 };
 
 const workflow: Array<{

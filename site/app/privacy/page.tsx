@@ -3,6 +3,9 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Privacy Policy — Kuula FOH Pilot",
   description: "Privacy information for Kuula FOH Pilot and fohpilot.com.",
+  alternates: {
+    canonical: "/privacy/",
+  },
 };
 
 export default function Privacy() {
@@ -20,7 +23,8 @@ export default function Privacy() {
             <p>
               This Privacy Policy applies to the Kuula FOH Pilot Android app
               and the Kuula FOH Pilot website at fohpilot.com. Kuula FOH Pilot
-              is operated by ELAVHÕBE OÜ.
+              is operated by ELAVHÕBE OÜ, an Estonian private limited company
+              with registry code 17331669.
             </p>
           </section>
 
@@ -121,9 +125,18 @@ export default function Privacy() {
             <address>
               <strong>ELAVHÕBE OÜ</strong>
               <br />
-              Tallinn, Estonia
+              Registry code: 17331669
+              <br />
+              Pae tn 21, 11415 Tallinn, Estonia
               <br />
               <a href="mailto:kuula@fohpilot.com">kuula@fohpilot.com</a>
+              <br />
+              <a
+                href="https://ariregister.rik.ee/eng/company/17331669/Elavh%C3%B5be-O%C3%9C"
+                rel="noreferrer"
+              >
+                Estonian e-Business Register entry
+              </a>
             </address>
           </section>
         </article>

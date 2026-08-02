@@ -3,6 +3,9 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Support — Kuula FOH Pilot",
   description: "Contact support for Kuula FOH Pilot.",
+  alternates: {
+    canonical: "/support/",
+  },
 };
 
 export default function Support() {
